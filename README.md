@@ -7,6 +7,7 @@ When compile.py is run, it scans the working directory for all .c files and list
 ## Usage
 1. Install GCC
   - MinGW-w64 for 64 and 32-bit Windows can be downloaded from [here](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download) and installed using the default options
+  - MacOS requires [Xcode](https://www.cs.auckland.ac.nz/~paul/C/Mac/) to be isntalled for GCC
   - Linux users can run ```sudo apt install gcc``` from the terminal. Alternatively, ```sudo apt install build-essential``` will install additional libraries, including g++
   
  2. Add GCC to path (for Windows only)
