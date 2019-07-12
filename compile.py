@@ -1,16 +1,25 @@
 import os, subprocess
+from platform import system
 files_c, file, cls = [], "", 0 #set to 1 for clear screen
+if system() == "Windows":
+    cls_cmd = "cls"
+else:
+    cls_cmd = "clear"  #  for Linux/MacOS
+
 def get_files():
     global files_c
     cwd = os.getcwd()
     files = os.listdir(cwd)
     files_c = [i for i in files if i.lower().endswith('.c')]
+
 def show_files():
     print("Identified following .c file(s):")
     for i in range(len(files_c)):
         print(i, files_c[i])
+
 def clear_screen():
-    os.system("cls") # os.system('clear') for Linux/MacOS
+    os.system(cls_cmd)
+    
 def compile():
     if cls:
         clear_screen()
@@ -22,11 +31,12 @@ def compile():
         print(f"Successfully compiled! Running {file[:-2]}.exe...\n")
         exit_code = subprocess.run(file[:-2]).returncode
         print(f"\n-----------------------------------\nProcess terminated with exit code {exit_code}") 
+
 while True:
     get_files()
-    if len(files_c)>0:
+    if files_c:
         show_files()
-        if len(files_c)==1:
+        if len(files_c) == 1:
         	file = files_c[0]
         while True:
             if file:
