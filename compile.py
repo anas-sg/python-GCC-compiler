@@ -1,6 +1,7 @@
 import os, subprocess
 from platform import system
 files_c, file, cls = [], "", 0 #set to 1 for clear screen
+command = ["gcc", "-std=c17", "-Wall"]
 if system() == "Windows":
     cls_cmd = "cls"
 else:
@@ -24,7 +25,7 @@ def compile():
     if cls:
         clear_screen()
     try:
-        subprocess.run(["gcc", "-std=c17", "-Wall", "-o", file[:-2], file], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=True)
+        subprocess.run([*command, "-o", file[:-2], file], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=True)
     except subprocess.CalledProcessError as suberror:
         print(suberror.stdout.decode("utf-8"))
     else:
